@@ -1,0 +1,1502 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>联想 MyHub — 企业一体化智能数字工作台</title>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Noto+Sans+SC:wght@400;500;600;700;900&amp;family=Poppins:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tailwind.css">
+
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      font-family: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .site-head {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 12px 20px 0;
+      margin-bottom: -76px;
+      background: transparent;
+    }
+    .head-pill {
+      height: 64px;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px 0 18px;
+      background: rgba(4, 5, 8, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      backdrop-filter: blur(16px) saturate(140%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+    .brand-name { color: #fff; }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.88);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .lang-switch button,
+    .lang-switch a {
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 650;
+      line-height: 1;
+      padding: 7px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .lang-switch button.is-on {
+      background: #fff;
+      color: #0f172a;
+    }
+    .copy-mail {
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 10px;
+      background: #eef2f8;
+      color: #294E95;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .copy-mail .material-symbols-outlined { font-size: 18px; }
+    .copy-mail:hover { background: #294E95; color: #fff; }
+    .copy-mail.is-done { background: #294E95; color: #fff; }
+    .to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 60;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      background: #294E95;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(41, 78, 149, 0.28);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s, background 0.2s;
+    }
+    .to-top.is-on {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+    }
+    .to-top:hover { background: #1f3d78; }
+    .to-top .material-symbols-outlined { font-size: 22px; }
+    #h1a {
+      font-size: 45px;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .hero-copy {
+      height: 332px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 76px;
+      gap: 22px;
+    }
+    .hero-stage {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 1600px;
+      overflow: hidden;
+      background: transparent;
+    }
+    .hero-atmosphere {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 72% 58% at 50% 18%, rgba(41, 78, 149, 0.55) 0%, rgba(41, 78, 149, 0.16) 40%, transparent 72%),
+        radial-gradient(ellipse 42% 48% at 10% 48%, rgba(24, 46, 96, 0.5) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 46% at 92% 46%, rgba(41, 78, 149, 0.4) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 32% at 50% 78%, rgba(16, 32, 72, 0.45) 0%, transparent 72%),
+        #040508;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 68%, transparent 100%);
+    }
+
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+      background-size: 28px 28px;
+      -webkit-mask-image:
+        linear-gradient(180deg, #000 0%, #000 68%, transparent 100%),
+        radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(180deg, #000 0%, #000 68%, transparent 100%),
+        radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+      mask-composite: intersect;
+      pointer-events: none;
+    }
+
+    .hero-stage::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 560px;
+      z-index: 34;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0) 0%, rgba(248, 250, 252, 0.16) 28%, rgba(248, 250, 252, 0.55) 62%, #f8fafc 100%);
+    }
+    .downloads-section {
+      position: relative;
+      z-index: 36;
+      margin-top: 0;
+      padding-top: 56px;
+      background: #f8fafc;
+    }
+
+    .brand-mark {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+    .cap-board {
+      background: rgba(234, 237, 241, 0.7);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      min-width: 1184px;
+    }
+    .cap-pane {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cap-head,
+    .cap-row {
+      display: grid;
+      grid-template-columns: 284fr 100fr 100fr 100fr;
+      align-items: center;
+      height: 40px;
+    }
+    .cap-head span,
+    .cap-row span {
+      padding: 0 8px;
+      text-align: center;
+    }
+    .cap-head span:first-child,
+    .cap-row span:first-child {
+      padding: 0 16px;
+      text-align: left;
+    }
+    .cap-head span:first-child {
+      color: #aba8b1;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .cap-head .hub { color: #294E95; font-size: 13px; font-weight: 700; }
+    .cap-head .peer { color: #0f172a; font-size: 13px; font-weight: 700; }
+    .cap-row {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(241, 245, 249, 0.8);
+      border-radius: 12px;
+    }
+    .cap-row .name { color: #0f172a; font-size: 13px; font-weight: 700; }
+    .cap-row .hub,
+    .cap-row .yes { color: #294E95; font-size: 17px; font-weight: 500; line-height: 1; }
+    .cap-row .no { color: #ef4444; font-size: 15px; font-weight: 500; line-height: 1; }
+    .compare-note { max-width: 920px; margin: 0 auto 28px; text-align: left; }
+    .compare-note + .compare-note { margin-top: -12px; }
+    .compare-note h3 { font-size: 15px; font-weight: 700; color: #0f172a; }
+    .compare-note p { margin-top: 6px; font-size: 14px; line-height: 1.75; color: #475569; }
+    .scene-card {
+      background: #fff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px -18px rgba(15, 23, 42, 0.45);
+    }
+    .scene-card img { width: 100%; height: 168px; object-fit: cover; display: block; }
+    .scene-card h3 { font-size: 16px; font-weight: 800; color: #0f172a; }
+    .scene-card ul { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .scene-card li { display: flex; gap: 8px; font-size: 12px; line-height: 1.65; color: #475569; }
+    .scene-card li::before { content: ""; width: 6px; height: 6px; margin-top: 6px; border-radius: 999px; background: currentColor; flex: 0 0 auto; }
+    .role-card {
+      background: rgba(241, 245, 249, 0.9);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+    .role-copy { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+    .role-block { display: flex; flex-direction: column; gap: 12px; }
+    .role-block h3 { margin: 0; font-size: 24px; font-weight: 700; line-height: 34px; color: #0f172a; }
+    .role-block h3.role-title-sm { font-size: 20px; line-height: 28px; }
+    .role-block p { margin: 0; font-size: 14px; line-height: 24px; color: #475569; }
+    .role-visual { flex: 0 0 512px; width: 512px; height: 392px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .role-visual.trio { flex-basis: 720px; width: 720px; gap: 40px; }
+    .role-visual.trio .role-phone img { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: contain; }
+    .role-phone { height: 100%; min-width: 0; display: flex; align-items: center; justify-content: center; }
+    .role-visual.multi .role-phone { flex: 1 1 0; }
+    .role-phone img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; border-radius: 12px; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16); }
+    .role-visual.trio .role-phone {
+      flex: 0 0 auto;
+      height: 392px;
+      width: calc(392px * 480 / 1000);
+      aspect-ratio: auto;
+    }
+    @media (max-width: 1100px) {
+      .role-card { flex-direction: column; align-items: stretch; gap: 24px; padding: 24px; }
+      .role-visual,
+      .role-visual.trio { flex-basis: auto; width: 100%; height: 320px; gap: 20px; }
+      .role-visual.trio .role-phone { height: 100%; width: auto; }
+    }
+
+    .showcase {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 300px;
+      width: 1200px;
+      height: 480px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .phone-ring {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1200px;
+      height: 480px;
+      perspective: 1050px;
+      perspective-origin: 600px 240px;
+      transform-style: preserve-3d;
+    }
+    .card {
+      position: absolute;
+      left: 600px;
+      top: 210px;
+      width: 148px;
+      height: 320px;
+      margin: -160px 0 0 -74px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #0c1830;
+      box-shadow: 0 18px 36px -14px rgba(0, 0, 0, 0.65);
+      backface-visibility: hidden;
+      border: none;
+      outline: none;
+      pointer-events: auto;
+    }
+    .card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .card .card-cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 26px 8px 10px;
+      background: linear-gradient(180deg, transparent 0%, rgba(41, 78, 149, 0.45) 42%, rgba(16, 32, 72, 0.94) 100%);
+      text-align: center;
+      z-index: 2;
+    }
+    .card .t-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: .02em;
+    }
+
+    .pc-stack {
+      position: relative;
+      z-index: 20;
+      margin-top: -986px;
+      padding-bottom: 88px;
+      background: linear-gradient(180deg, transparent 986px, #f8fafc 986px);
+    }
+    .pc-card {
+      position: sticky;
+      top: calc(120px + var(--i) * 16px);
+      z-index: calc(3 + var(--i));
+      height: 523px;
+      display: flex;
+      justify-content: center;
+    }
+    .pc-card-face {
+      position: relative;
+      width: 840px;
+      height: 523px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.4);
+      transform-origin: top center;
+    }
+    .pc-card-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .pc-window-bar {
+      height: 38px;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      justify-content: space-between;
+    }
+
+    .mask-chat-sidebar {
+      position: absolute;
+      left: 9.2%;
+      top: 38px;
+      width: 21%;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid #e2e8f0;
+      padding: 14px 10px;
+      z-index: 10;
+    }
+    .mask-chat-main {
+      position: absolute;
+      left: 30.2%;
+      right: 0;
+      top: 38px;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 18px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .btn-lenovo {
+      background: linear-gradient(135deg, #e2231a 0%, #b81710 100%);
+      box-shadow: 0 4px 14px rgba(226, 35, 26, 0.35);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-lenovo:hover {
+      transform: translateY(-1.5px);
+      box-shadow: 0 8px 22px rgba(226, 35, 26, 0.45);
+      filter: brightness(1.04);
+    }
+    #h1b {
+      --radiant-width: 100px;
+      --radiant-anim-duration: 10s;
+      font-size: 45px;
+      line-height: 1.15;
+      text-align: center;
+      background-image:
+        linear-gradient(90deg, transparent, #fff 50%, transparent),
+        linear-gradient(135deg, #294E95, #7BA4F2, #294E95);
+      background-size: var(--radiant-width) 100%, 200% auto;
+      background-repeat: no-repeat, repeat;
+      background-position: calc(-100% - var(--radiant-width)) 0, 0% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: radiant-text var(--radiant-anim-duration) infinite;
+    }
+    @keyframes radiant-text {
+      0%, 90%, 100% {
+        background-position: calc(-100% - var(--radiant-width)) 0, 0% 50%;
+      }
+      30%, 60% {
+        background-position: calc(100% + var(--radiant-width)) 0, 100% 50%;
+      }
+    }
+    .hero-primary.btn-lenovo {
+      background: linear-gradient(100deg, #8eafdf 0%, #ffffff 100%);
+      color: #294E95;
+      box-shadow: 0 4px 14px rgba(41, 78, 149, 0.22);
+    }
+    .hero-primary.btn-lenovo:hover {
+      box-shadow: 0 8px 22px rgba(41, 78, 149, 0.4);
+      filter: none;
+    }
+    .downloads-section .btn-lenovo {
+      background: #294E95;
+      box-shadow: 0 4px 14px rgba(41, 78, 149, 0.35);
+    }
+    .downloads-section .btn-lenovo:hover {
+      box-shadow: 0 8px 22px rgba(41, 78, 149, 0.45);
+    }
+
+    section[id] {
+      scroll-margin-top: 72px;
+    }
+
+    /* Entrance uses translate / scale / clip-path, not transform.
+       transform already centers the PC mock and places the carousel cards. */
+    html.intro .site-head{opacity:0;translate:0 -9px}
+    html.intro .brand-mark,
+    html.intro .brand-name,
+    html.intro .nav-links a,
+    html.intro .lang-switch{opacity:0;translate:0 6px}
+    html.intro #h1a,
+    html.intro #h1b{opacity:0;translate:0 15px;clip-path:inset(100% 0 -30% 0)}
+    html.intro #sub1,
+    html.intro #sub2{opacity:0;translate:0 10px}
+    html.intro .hero-primary,
+    html.intro .hero-secondary{opacity:0;translate:0 13px;scale:.985}
+    html.intro .phone-ring{opacity:0;translate:0 18px;scale:.99}
+    html.intro .pc-mockup{opacity:0;translate:0 26px}
+    @media (prefers-reduced-motion:reduce){
+      html.intro .site-head,
+      html.intro .brand-mark,
+      html.intro .brand-name,
+      html.intro .nav-links a,
+      html.intro .lang-switch,
+      html.intro #h1a,
+      html.intro #h1b,
+      html.intro #sub1,
+      html.intro #sub2,
+      html.intro .hero-primary,
+      html.intro .hero-secondary,
+      html.intro .phone-ring,
+      html.intro .pc-mockup{opacity:1;translate:none;scale:none;clip-path:none}
+      #h1b { animation: none; }
+    }
+
+    .matrix-section { background: #f8fafc; padding: 80px 32px; }
+    .matrix-wrap { max-width: 1216px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+    .matrix-heading { text-align: center; }
+    .matrix-heading h2 { line-height: 44px; color: #0f172a; }
+    .matrix-heading p { margin-top: 12px; font-size: 14px; line-height: 20px; color: #475569; }
+    .matrix-layout { width: 100%; display: flex; align-items: center; gap: 48px; }
+    .matrix-stage { position: relative; width: 744px; height: 440px; flex: 0 0 744px; }
+    .matrix-card {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 24px;
+      padding: 24px;
+      box-sizing: border-box;
+      box-shadow: 0 16px 40px -24px rgba(15, 23, 42, 0.28);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      transform-origin: center bottom;
+      will-change: transform, opacity;
+    }
+    .matrix-card-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .matrix-card-pc .matrix-card-inner { gap: 16px; }
+    .matrix-card-phones .matrix-card-inner { gap: 48px; }
+    .matrix-pc { flex: 1 1 auto; width: 514px; max-width: 514px; height: 320px; min-width: 0; aspect-ratio: 514 / 320; object-fit: contain; border-radius: 8px; display: block; }
+    .matrix-phone {
+      width: 167px;
+      height: 320px;
+      flex: 0 0 167px;
+      aspect-ratio: 167 / 320.197;
+      background: #e3e3e3;
+      border-radius: 24px;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+    .matrix-phone-screen { position: relative; width: 155px; height: 308px; background: #fff; border-radius: 18px; overflow: hidden; }
+    .matrix-phone-screen img { position: absolute; display: block; max-width: none; object-fit: contain; }
+    .matrix-shot-crop { left: 3.271%; top: -2.401%; width: 93.453%; height: 102.4%; }
+    .matrix-shot-full { left: 1.69%; top: -5.639%; width: 96.614%; height: 105.64%; }
+    .matrix-shot-fill { inset: 0; width: 100%; height: 100%; border-radius: 18px; }
+    .matrix-side {
+      flex: 1 1 auto;
+      min-width: 0;
+      height: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .matrix-intro { width: 376px; max-width: 100%; text-align: center; }
+    .matrix-copy-in { animation: matrix-copy-in 0.2s ease-in-out; }
+    .matrix-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 88px;
+      height: 26px;
+      padding: 0 12px;
+      border-radius: 13px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+    .matrix-name { margin-top: 12px; font-size: 28px; font-weight: 700; line-height: 40px; color: #0f172a; }
+    .matrix-desc { margin-top: 12px; font-size: 18px; font-weight: 500; line-height: 30px; color: #475569; }
+    .matrix-note { margin-top: 12px; font-size: 13px; line-height: 22px; color: #64748b; }
+    .matrix-word {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(5px);
+      animation: matrix-word 0.2s ease-in-out forwards;
+    }
+    @keyframes matrix-copy-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes matrix-word {
+      to { opacity: 1; filter: blur(0); transform: translateY(0); }
+    }
+    .matrix-nav { display: flex; align-items: center; gap: 16px; }
+    .matrix-arrow {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .matrix-arrow img { width: 20px; height: 20px; display: block; transition: transform 0.3s ease; }
+    .matrix-arrow:hover img { transform: rotate(12deg); }
+    .matrix-arrow-next:hover img { transform: rotate(-12deg); }
+    .matrix-count { width: 64px; text-align: center; font-size: 13px; font-weight: 500; line-height: 20px; color: #64748b; }
+    @media (max-width: 1100px) {
+      .matrix-section { padding: 64px 16px; }
+      .matrix-layout { flex-direction: column; gap: 28px; }
+      .matrix-stage { width: 100%; height: auto; aspect-ratio: 3 / 2; flex-basis: auto; }
+      .matrix-card { padding: 16px; }
+      .matrix-card-pc .matrix-card-inner { gap: 12px; }
+      .matrix-card-phones .matrix-card-inner { gap: 12px; }
+      .matrix-card-pc .matrix-pc { width: auto; height: auto; max-width: none; flex: 1 1 auto; }
+      .matrix-card-pc .matrix-phone { width: 30%; height: auto; max-width: none; flex: 0 0 30%; }
+      .matrix-card-phones .matrix-phone { width: calc((100% - 24px) / 3); height: auto; max-width: none; flex: 0 0 calc((100% - 24px) / 3); }
+      .matrix-phone { padding: 3px; border-radius: 16px; }
+      .matrix-phone-screen { width: 100%; height: 100%; border-radius: 13px; }
+      .matrix-side { height: auto; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-copy { height: auto; padding-top: 88px; padding-bottom: 12px; }
+      .hero-copy h1 span { white-space: normal; }
+      #h1a, #h1b { font-size: 34px; }
+      .site-head { margin-bottom: -68px; padding: 10px 12px 0; }
+      .head-pill { height: 56px; border-radius: 28px; }
+      .hero-stage { height: auto; min-height: 720px; padding-bottom: 80px; }
+      .hero-stage::after { height: 160px; }
+      .showcase { display: none; }
+      .pc-stack { margin-top: 28px; padding-bottom: 0; background: #f8fafc; }
+      .pc-card { position: relative; top: auto; height: auto; margin: 0 auto 16px; }
+      .pc-card-face { width: min(840px, calc(100% - 32px)); height: auto; aspect-ratio: 1024 / 637; }
+    }
+  </style>
+<script>
+document.documentElement.classList.add('intro');
+setTimeout(function(){document.documentElement.classList.remove('intro');},4000);
+</script>
+</head>
+<body class="bg-background text-slate-800 antialiased selection:bg-red-100 selection:text-red-700">
+<header class="site-head">
+<div class="head-pill max-w-7xl mx-auto px-4 sm:px-6">
+<div class="flex items-center gap-2.5">
+<img class="brand-mark" src="leliao-logo.png" alt="联想乐聊 Lenovo MyHub">
+</div>
+<nav class="nav-links hidden md:flex items-center gap-8">
+<a class="text-sm font-medium" href="#downloads" data-i18n="nav.dl">全平台下载</a>
+<a class="text-sm font-medium" href="#matrix" data-i18n="nav.matrix">功能矩阵</a>
+<a class="text-sm font-medium" href="#why" data-i18n="nav.scenes">功能场景</a>
+<a class="text-sm font-medium" href="#ecosystem" data-i18n="nav.why">选择乐聊</a>
+<a class="text-sm font-medium" href="#roles" data-i18n="nav.roles">业务角色</a>
+<a class="text-sm font-medium" href="https://myhubmobile.lenovo.com/#/service" target="_blank" rel="noopener noreferrer" data-i18n="nav.help">帮助中心</a>
+<a class="text-sm font-medium" href="https://admin.cochat.lenovo.com/#/" target="_blank" rel="noopener noreferrer" data-i18n="nav.oa">公众号服务</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="lang-switch" role="group" aria-label="中英文切换">
+<button type="button" data-set-lang="zh" class="is-on">中文</button>
+<a href="https://myhubmobile.lenovo.com/#/home?lang=en">EN</a>
+</div>
+</div>
+</div>
+</header>
+
+<section class="hero-stage">
+<div class="hero-atmosphere"></div>
+<div class="hero-grid-pattern"></div>
+<div class="hero-copy relative z-30 mx-auto w-full max-w-5xl px-4 text-center">
+<h1 class="font-black text-white tracking-tight">
+        <span id="h1a" class="block whitespace-nowrap" data-i18n="hero.a">乐聊 MyHub 一站式办公平台</span>
+        <span id="h1b" class="block mt-3 whitespace-nowrap" data-i18n="hero.b">随时随地高效连接，全天候赋能数字化办公</span>
+</h1>
+</div>
+<div class="showcase">
+<div class="phone-ring" id="ring"></div>
+</div>
+</section>
+<div class="pc-stack pc-mockup" id="pc-stack">
+<article class="pc-card" style="--i:0">
+<div class="pc-card-face">
+<img src="pc-chat@2x.png" alt="乐聊消息" width="2048" height="1274">
+</div>
+</article>
+<article class="pc-card" style="--i:1">
+<div class="pc-card-face">
+<img src="pc-contacts@2x.png" alt="乐聊通讯录" width="2048" height="1274">
+</div>
+</article>
+<article class="pc-card" style="--i:2">
+<div class="pc-card-face">
+<img src="pc-calendar@2x.png" alt="乐聊日程" width="2048" height="1274">
+</div>
+</article>
+</div>
+<section class="downloads-section pb-20" id="downloads">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<h2 class="text-[28px] sm:text-[34px] font-extrabold text-slate-900" data-i18n="dl.title">全平台客户端下载</h2>
+<p class="text-sm text-slate-600 mt-2" data-i18n="dl.sub">支持 Windows、iOS、Android 及 Web 端，随时随地开启数字化高效办公体验</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-[#eef2f8] text-[#294E95] flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">desktop_windows</span>
+</div>
+<h3 class="text-base font-bold text-slate-900" data-i18n="dl.win">Windows 桌面端</h3>
+<p class="text-xs text-slate-500 mt-2 leading-relaxed" data-i18n="dl.winp">专为 ThinkPad 及 PC 优化，适配 Windows 10 / 11 64位官方企业版</p>
+</div>
+<a class="mt-6 w-full btn-lenovo text-white text-xs font-semibold py-2.5 rounded-lg text-center shadow-sm" href="MyHub%2BDesktop_setup_3.3.0.exe" download="MyHub+Desktop_setup_3.3.0.exe" data-i18n="dl.winb">下载安装包 (.exe)</a>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">globe</span>
+</div>
+<h3 class="text-base font-bold text-slate-900" data-i18n="dl.web">网页工作台</h3>
+<p class="text-xs text-slate-500 mt-2 leading-relaxed" data-i18n="dl.webp">免安装直达，全面兼容主流现代浏览器，支持企业 SSO 单点登录</p>
+</div>
+<a class="mt-6 w-full btn-lenovo text-white text-xs font-semibold py-2.5 rounded-lg text-center shadow-sm" href="https://stscn.lenovo.com/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=cochatWeb" target="_blank" rel="noopener" data-i18n="dl.webb">进入网页工作台</a>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl">android</span>
+</div>
+<h3 class="text-base font-bold text-slate-900" data-i18n="dl.and">Android 客户端</h3>
+<p class="text-xs text-slate-500 mt-2 leading-relaxed" data-i18n="dl.andp">扫码下载安卓客户端，支持手机快捷登录，随时查看工作台消息</p>
+<img class="mt-4 mx-auto w-36 h-36 rounded-lg" src="mobile-qr.png" alt="Android 下载二维码">
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center mb-4">
+<svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.98 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.2-2.98.81-.94 2.15-1.64 3.25-1.68.03.13.05.28.05.43zM20.93 17.14c-.03.07-.46 1.58-1.52 3.12-.94 1.37-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8-1.29-1.82-2.32-4.63-2.32-7.28 0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.38 2.19-.13.09-2.55 1.49-2.55 4.42 0 3.53 3.09 4.71 3.12 4.72z"/>
+</svg>
+</div>
+<h3 class="text-base font-bold text-slate-900" data-i18n="dl.ios">iOS 客户端</h3>
+<p class="text-xs text-slate-500 mt-2 leading-relaxed" data-i18n="dl.iosp">扫码前往 App Store 下载客户端，移动端同步办公数据</p>
+<img class="mt-4 mx-auto w-36 h-36 rounded-lg" src="mobile-qr.png" alt="iOS 下载二维码">
+</div>
+</div>
+</div>
+<div class="mt-8 bg-white rounded-2xl p-6 text-slate-900 border border-slate-200/80 shadow-sm flex items-center gap-4 flex-wrap">
+<div class="w-12 h-12 rounded-xl bg-[#eef2f8] text-[#294E95] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-2xl">mail</span>
+</div>
+<div class="min-w-0">
+<h4 class="text-sm font-bold" data-i18n="dl.contact">联系我们</h4>
+<p class="text-sm text-slate-600 mt-1 leading-relaxed" data-i18n="dl.contactp">如有产品咨询、功能反馈、使用问题，欢迎邮件沟通</p>
+</div>
+<div class="ml-auto flex items-center gap-3 flex-shrink-0">
+<a class="text-sm font-semibold text-slate-900 hover:text-[#294E95]" href="mailto:MyHub@lenovo.com">MyHub@lenovo.com</a>
+<button class="copy-mail" type="button" id="copy-mail" aria-label="复制邮箱">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="matrix-section" id="matrix">
+<div class="matrix-wrap">
+<div class="matrix-heading">
+<h2 class="text-[28px] sm:text-[34px] font-extrabold" data-i18n="mx.title">五大核心功能矩阵 · 掌上全联想</h2>
+<p data-i18n="mx.sub">真实手机截图展现 MyHub 8.0 精致人机界面与强大功能架构</p>
+</div>
+<div class="matrix-layout">
+<div class="matrix-stage" id="matrix-shot"></div>
+<div class="matrix-side">
+<div class="matrix-copy" id="matrix-copy"></div>
+<div class="matrix-nav">
+<button class="matrix-arrow" id="matrix-prev" type="button" aria-label="上一项"><img src="matrix/arrow-left.svg" alt="" width="20" height="20"></button>
+<span class="matrix-count" id="matrix-index">01 / 05</span>
+<button class="matrix-arrow matrix-arrow-next" id="matrix-next" type="button" aria-label="下一项"><img src="matrix/arrow-right.svg" alt="" width="20" height="20"></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-20 bg-white" id="why">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<h2 class="text-[28px] sm:text-[34px] font-extrabold text-slate-900" data-i18n="why.title">乐聊MyHub主要功能场景</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<article class="scene-card">
+<img src="scenes/scene-1.jpg" alt="开放协作工作区">
+<div class="p-5">
+<h3 data-i18n="sc.1t">移动办公 · 沟通</h3>
+<ul>
+<li data-i18n="sc.1a">邮件：企业级邮件方案，与电脑端 Outlook 无缝互通</li>
+<li data-i18n="sc.1b">即时通讯：随时随地与全球同事建立联系</li>
+<li data-i18n="sc.1c">群聊：支持千人大群、工作群与运动群，成员变化实时建群，离职自动退群，保障公司信息安全</li>
+</ul>
+</div>
+</article>
+<article class="scene-card">
+<img src="scenes/scene-2.jpg" alt="智慧咖啡休闲空间">
+<div class="p-5">
+<h3 data-i18n="sc.2t">移动办公 · 协作</h3>
+<ul>
+<li data-i18n="sc.2a">日程：支持日历共享，并与 Outlook 同步关联</li>
+<li data-i18n="sc.2b">通讯录：查看联想全球企业架构，让内部沟通更顺畅</li>
+<li data-i18n="sc.2c">任务：轻量级任务分配与管理</li>
+</ul>
+</div>
+</article>
+<article class="scene-card">
+<img src="scenes/scene-3.jpg" alt="混合办公工位">
+<div class="p-5">
+<h3 data-i18n="sc.3t">移动办公 · 审批</h3>
+<ul>
+<li data-i18n="sc.3a">随时在手机端处理审批待办，覆盖 HR、IT、财务、行政与业务等多个系统单据</li>
+</ul>
+</div>
+</article>
+<article class="scene-card">
+<img src="scenes/scene-4.jpg" alt="联想园区现代连廊">
+<div class="p-5">
+<h3 data-i18n="sc.4t">智慧园区</h3>
+<ul>
+<li data-i18n="sc.4a">北京园区：餐卡查询、办公用品预定、停车助手、打印服务、联想 AED、通勤车、内转信预约</li>
+<li data-i18n="sc.4b">上海园区：园区概览、餐卡查询、会议室扫码预定、停车助手，以及更多园区服务</li>
+</ul>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="py-20 bg-[#f8fafc]" id="ecosystem">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-8">
+<h2 class="text-[28px] sm:text-[34px] font-extrabold text-[#0f172a] leading-tight"><span data-i18n="eco.pre">联想员工为什么 </span><span class="text-[#294E95]" data-i18n="eco.em">选择乐聊Myhub</span></h2>
+</div>
+<div class="compare-note">
+<h3 data-i18n="eco.o">与 Outlook 对比</h3>
+<p data-i18n="eco.op">作为一站式移动办公 App，除了电子邮件和日历功能，乐聊能够支持即时通讯、系统审批、企业通讯录等办公需求，功能更加强大和全面</p>
+</div>
+<div class="compare-note">
+<h3 data-i18n="eco.t">与 Teams 对比</h3>
+<p data-i18n="eco.tp">依托联想强大的自研能力，除提供团队协作工具外，乐聊支持定制化开发，满足联想全球不同的业务需求，同时，乐聊也是全球联想员工交流、分享联想文化的聚集地，每天都有各式文化活动等你参加</p>
+</div>
+<div class="overflow-x-auto">
+<div class="cap-board">
+<div class="cap-pane">
+<div class="cap-head"><span data-i18n="cap.h">亮点</span><span class="hub">乐聊</span><span class="peer">Teams</span><span class="peer">Outlook</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.im">即时通讯</span><span class="hub" aria-label="支持">✓</span><span class="yes" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.cal">日程</span><span class="hub" aria-label="支持">✓</span><span class="yes" aria-label="支持">✓</span><span class="yes" aria-label="支持">✓</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.dir">企业通讯录</span><span class="hub" aria-label="支持">✓</span><span class="yes" aria-label="支持">✓</span><span class="yes" aria-label="支持">✓</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.appr">审批中心</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="no" aria-label="未涵盖">✕</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.task">团队任务</span><span class="hub" aria-label="支持">✓</span><span class="yes" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.todo">个人待办</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="yes" aria-label="支持">✓</span></div>
+</div>
+<div class="cap-pane">
+<div class="cap-head"><span data-i18n="cap.h">亮点</span><span class="hub">乐聊</span><span class="peer">Teams</span><span class="peer">Outlook</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.room">会议室预定</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="yes" aria-label="支持">✓</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.leave">休假申请</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="no" aria-label="未涵盖">✕</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.custom">客制化需求</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="no" aria-label="未涵盖">✕</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.supply">办公用品</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="no" aria-label="未涵盖">✕</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.culture">文化活动</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="no" aria-label="未涵盖">✕</span></div>
+<div class="cap-row"><span class="name" data-i18n="cap.nav">园区导航</span><span class="hub" aria-label="支持">✓</span><span class="no" aria-label="未涵盖">✕</span><span class="no" aria-label="未涵盖">✕</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-20 bg-white" id="roles">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-10">
+<h2 class="text-[28px] sm:text-[34px] font-extrabold text-slate-900" data-i18n="roles.title">不同业务角色，同一套高质体验</h2>
+<p class="text-sm text-slate-600 mt-2" data-i18n="roles.sub">无论日常全员打卡还是团队领导决策，皆有量身定制的高效数字化工作流</p>
+</div>
+<div class="flex justify-center mb-8 overflow-x-auto pb-2">
+<div class="inline-flex p-1 bg-slate-100 rounded-xl" id="role-tabs">
+<button class="px-5 py-2 text-xs font-bold rounded-lg bg-white text-slate-900 shadow-sm transition-all" type="button" data-role="all" data-i18n="role.all" onclick="switchRole('all', this)">全员通用场景</button>
+<button class="px-5 py-2 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all" type="button" data-role="leader" data-i18n="role.leader" onclick="switchRole('leader', this)">团队主管场景</button>
+<button class="px-5 py-2 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all" type="button" data-role="sales" data-i18n="role.sales" onclick="switchRole('sales', this)">销售与差旅业务</button>
+<button class="px-5 py-2 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all" type="button" data-role="partner" data-i18n="role.partner" onclick="switchRole('partner', this)">生态合作伙伴</button>
+</div>
+</div>
+<div class="role-card" id="role-content">
+<div class="role-copy" id="role-copy">
+<div class="role-block">
+<h3>智能园区</h3>
+<p>联想全球所有办公地点都已启用联想智慧园区进行智能化办公。</p>
+<div class="role-lines">
+<p>- 会议室预定</p>
+<p>- 公共办公桌预定</p>
+<p>- 空间利用控制，实现园区能效最大化</p>
+<p>- 园区导航 总部园区一键直达</p>
+</div>
+</div>
+</div>
+<div class="role-visual multi" id="role-visual">
+<div class="role-phone"><img alt="工位预定" src="roles/desk.png"></div>
+<div class="role-phone"><img alt="园区导航" src="roles/nav.jpg"></div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-10">
+<div class="md:col-span-2 space-y-4">
+<div class="flex items-center gap-4">
+<img src="footer-lenovo.png" alt="Lenovo 联想" class="h-5 w-auto">
+<img src="leliao-logo.png" alt="联想乐聊 Lenovo MyHub" class="h-5 w-auto">
+</div>
+<p class="text-xs text-slate-400 leading-relaxed max-w-sm" data-i18n="ft.blurb">联想全球企业一体化智能数字工作台，连接人人，赋能业务，实现全球智慧园区与全端办公生态的卓越连接</p>
+<div class="flex items-center gap-2 text-[11px] text-slate-400">
+<span class="material-symbols-outlined text-[16px] text-emerald-400">verified_user</span>
+<span data-i18n="ft.iso">通过 ISO/IEC 27001 信息安全与数据隐私双重认证</span>
+</div>
+</div>
+<div>
+<h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3" data-i18n="ft.product">产品矩阵</h4>
+<ul class="space-y-2 text-xs">
+<li><a class="hover:text-white transition-colors" href="#matrix" data-i18n="ft.p1">消息中心 (Chat)</a></li>
+<li><a class="hover:text-white transition-colors" href="#matrix" data-i18n="ft.p2">今日事待办 (Today)</a></li>
+<li><a class="hover:text-white transition-colors" href="#matrix" data-i18n="ft.p3">智慧园区 (Campus)</a></li>
+<li><a class="hover:text-white transition-colors" href="#matrix" data-i18n="ft.p4">发现社区 (Community)</a></li>
+<li><a class="hover:text-white transition-colors" href="#matrix" data-i18n="ft.p5">应用工作台 (Portal)</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3" data-i18n="ft.admin">管理后台</h4>
+<ul class="space-y-2 text-xs">
+<li><a class="hover:text-white transition-colors" href="https://admin.cochat.lenovo.com/#/superadmin" target="_blank" rel="noopener noreferrer" data-i18n="ft.a1">公众号申请平台</a></li>
+<li><a class="hover:text-white transition-colors" href="https://admin.cochat.lenovo.com/#/memeStore/home" target="_blank" rel="noopener noreferrer" data-i18n="ft.a2">乐聊表情上传平台</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3" data-i18n="ft.more">其他支持</h4>
+<ul class="space-y-2 text-xs">
+<li><a class="hover:text-white transition-colors" href="https://home.lenovo.com/home" target="_blank" rel="noopener noreferrer">One Portal</a></li>
+<li><a class="hover:text-white transition-colors" href="https://brandworld.lenovo.com/ch/" target="_blank" rel="noopener noreferrer">Lenovo Brand World</a></li>
+<li><a class="hover:text-white transition-colors" href="https://www.lenovo.com.cn/" target="_blank" rel="noopener noreferrer" data-i18n="ft.shop">联想商城</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-800 text-[11px]">
+<div>© 2025 联想集团 Lenovo. 保留所有权利。联想 MyHub 企业数字化工作台。</div>
+</div>
+</div>
+</footer>
+
+<button class="to-top" type="button" id="to-top" aria-label="一键到顶">
+  <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<script>
+    var MOBILE_CARDS = [
+      { name: '消息中心', url: 'carousel/chat.jpg' },
+      { name: '今日事', url: 'carousel/today.jpg' },
+      { name: '智慧园区', url: 'carousel/campus.jpg' },
+      { name: '发现', url: 'carousel/discover.jpg' },
+      { name: '应用工作台', url: 'carousel/apps.jpg' },
+      { name: '我的审批', url: 'carousel/approval.png' },
+      { name: '园区导航', url: 'carousel/nav.jpg' },
+      { name: '停车小助手', url: 'carousel/parking.png' },
+      { name: '运动圈', url: 'carousel/sport.png' }
+    ];
+
+    var ringEl = document.getElementById('ring');
+    var cards = [];
+    var N_CARDS = 30;
+    var STEP = 360 / N_CARDS;
+    var RADIUS = 820;
+    var CULL = 68;
+    var phase = 0;
+
+    for (var i = 0; i < N_CARDS; i++) {
+      var item = MOBILE_CARDS[i % MOBILE_CARDS.length];
+      var cEl = document.createElement('div');
+      cEl.className = 'card';
+      cEl.innerHTML =
+        '<img alt="' + item.name + '" src="' + item.url + '">' +
+        '<div class="card-cap">' +
+          '<div class="t-name">' + item.name + '</div>' +
+        '</div>';
+      ringEl.appendChild(cEl);
+      cards.push(cEl);
+    }
+
+    var cardSeen = new Array(N_CARDS);
+    function placeCards() {
+      for (var i = 0; i < N_CARDS; i++) {
+        var el = cards[i];
+        var a = ((i * STEP + phase) % 360 + 540) % 360 - 180;
+        var r = a * Math.PI / 180;
+        var c = Math.cos(r);
+        var s = Math.sin(r);
+        var tx = RADIUS * s;
+        var tz = RADIUS * (1 - c);
+        el.style.transform = 'translate3d(' + tx.toFixed(2) + 'px, 0, ' + tz.toFixed(2) + 'px) rotateY(' + (-a).toFixed(2) + 'deg)';
+        var hidden = Math.abs(a) > CULL;
+        if (cardSeen[i] !== hidden) {
+          cardSeen[i] = hidden;
+          el.style.visibility = hidden ? 'hidden' : 'visible';
+        }
+      }
+    }
+
+    var lastTime = 0;
+    var ringFrame = 0;
+    var ringOnScreen = true;
+    var ringScrolling = false;
+    function tick(now) {
+      ringFrame = 0;
+      if (!ringOnScreen || ringScrolling) return;
+      if (!lastTime) lastTime = now;
+      var dt = (now - lastTime) / 1000;
+      lastTime = now;
+      if (dt > 0 && dt < 0.2) {
+        phase -= 2.2 * dt;
+      } else {
+        phase -= 0.038;
+      }
+      placeCards();
+      ringFrame = window.requestAnimationFrame(tick);
+    }
+    function startRing() {
+      if (!ringOnScreen || ringScrolling || ringFrame) return;
+      lastTime = 0;
+      ringFrame = window.requestAnimationFrame(tick);
+    }
+    function stopRing() {
+      if (ringFrame) cancelAnimationFrame(ringFrame);
+      ringFrame = 0;
+    }
+    var showcaseEl = document.querySelector('.showcase');
+    if (showcaseEl && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        ringOnScreen = entries.some(function (entry) { return entry.isIntersecting; });
+        if (ringOnScreen) startRing();
+        else stopRing();
+      }, { rootMargin: '80px' }).observe(showcaseEl);
+    }
+    var ringScrollTimer = 0;
+    window.addEventListener('scroll', function () {
+      ringScrolling = true;
+      stopRing();
+      clearTimeout(ringScrollTimer);
+      ringScrollTimer = setTimeout(function () {
+        ringScrolling = false;
+        startRing();
+      }, 140);
+    }, { passive: true });
+    startRing();
+
+    var roleData = {
+      all: {
+        imgs: [{ src: 'roles/desk.png', alt: '工位预定' }, { src: 'roles/nav.jpg', alt: '园区导航' }],
+        blocks: [
+          { title: '智能园区', enTitle: 'Smart Campus', lead: '联想全球所有办公地点都已启用联想智慧园区进行智能化办公。', enLead: 'Every Lenovo office now runs on the smart campus for day-to-day work.', lines: ['会议室预定', '公共办公桌预定', '空间利用控制，实现园区能效最大化', '园区导航 总部园区一键直达'], enLines: ['Meeting room booking', 'Shared desk booking', 'Space control that raises campus energy efficiency', 'Campus navigation, one tap to headquarters'] }
+        ]
+      },
+      leader: {
+        imgs: [{ src: 'roles/glt.jpg', alt: 'GLT' }, { src: 'roles/leader.png', alt: '移动审批' }],
+        gap: 28,
+        blocks: [
+          { title: 'GLT2021-GLT2026', lead: '乐聊团队为联想GLT会议提供包含移动端和 PC端的一站式会议服务支持方案。', enLead: 'LeLiao supports Lenovo GLT with a one-stop meeting service on mobile and PC.' },
+          { title: '移动审批', enTitle: 'Mobile Approvals', lead: '集成Lenovo大部分审批, 如HROA、ITSM、GAMS、ADM、Ariba、Contract等多个审批系统于一体, 实现移动端实时审批，随时随地处理审批单据。', enLead: 'HROA, ITSM, GAMS, ADM, Ariba, Contract, and more approvals in one place, ready to act on from a phone.' }
+        ]
+      },
+      sales: {
+        imgs: [{ src: 'roles/sales.png', alt: '今日事' }, { src: 'roles/apps.png', alt: '业务应用' }, { src: 'roles/contacts.png', alt: '通讯录' }],
+        blocks: [
+          { title: '支持远程办公', enTitle: 'Work From Anywhere', lines: ['支持访问电子邮件和日历', '公共办公桌预定', '支持移动端访问业务系统', '通过联想通讯录与全球同事建立联系', '请假'], enLines: ['Email and calendar on the go', 'Shared desk booking', 'Business systems from a phone', 'Reach global colleagues in the directory', 'Leave requests'] }
+        ]
+      },
+      partner: {
+        imgs: [{ src: 'roles/partner-form.png', alt: '暑促SO叫牌' }, { src: 'roles/partner-login.png', alt: 'Lenovo ID 登录' }],
+        gap: 20,
+        blocks: [
+          { title: '中国区消费业务寒促、暑促会', enTitle: 'China Consumer Peak Events', size: 20, lines: ['节省人工成本：将来自2378名用户的叫牌数据由手工统计升级成电子化处理', '节省时间成本：将数据统计流程从几天缩短至小时', '数据报告：为业务合作伙伴提供包含万条数据的统计报告', '实时数据看板：年度/区域目标一目了然'], enLines: ['Less manual work: bidding data from 2,378 users moves from spreadsheets to a digital flow', 'Less time: reporting drops from days to hours', 'Reports: partners get summaries across tens of thousands of records', 'Live boards: yearly and regional targets at a glance'] },
+          { title: 'Lenovo ID', size: 20, lines: ['外部用户注册登录联想工具', '即时通讯：支持所有业务相关人员在联想环境内沟通，保证公司安全', '公众号：项目成果整合展示渠道', '乐友圈：合作之余增进了解'], enLines: ['External users sign in to Lenovo tools', 'Messaging stays inside the Lenovo environment', 'Official accounts collect project updates', 'LeYou Circle builds the relationship beyond the deal'] }
+        ]
+      }
+    };
+
+    var roleKeys = ['all', 'leader', 'sales', 'partner'];
+    var roleAt = 0;
+    var roleTimer = 0;
+
+    function markRoleTab(key) {
+      var tabs = document.getElementById('role-tabs');
+      if (!tabs) return;
+      tabs.querySelectorAll('button').forEach(function (b) {
+        var on = b.getAttribute('data-role') === key;
+        b.className = on
+          ? 'px-5 py-2 text-xs font-bold rounded-lg bg-white text-slate-900 shadow-sm transition-all'
+          : 'px-5 py-2 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all';
+      });
+    }
+
+    function armRoleTimer() {
+      clearInterval(roleTimer);
+      roleTimer = setInterval(function () {
+        roleAt = (roleAt + 1) % roleKeys.length;
+        switchRole(roleKeys[roleAt]);
+      }, 3000);
+    }
+
+    function switchRole(key) {
+      var d = roleData[key];
+      if (!d) return;
+      var en = window.PAGE_LANG === 'en';
+      var copy = document.getElementById('role-copy');
+      copy.style.gap = (d.gap || 0) + 'px';
+      copy.innerHTML = d.blocks.map(function (b) {
+        var title = en && b.enTitle ? b.enTitle : b.title;
+        var lead = en && b.enLead ? b.enLead : b.lead;
+        var lines = en && b.enLines ? b.enLines : b.lines;
+        var html = '<div class="role-block"><h3' + (b.size === 20 ? ' class="role-title-sm"' : '') + '>' + title.replace(/&/g, '&amp;') + '</h3>';
+        if (lead) html += '<p>' + lead + '</p>';
+        if (lines) html += '<div class="role-lines">' + lines.map(function (line) { return '<p>- ' + line + '</p>'; }).join('') + '</div>';
+        return html + '</div>';
+      }).join('');
+      var visual = document.getElementById('role-visual');
+      visual.classList.toggle('multi', d.imgs.length > 1);
+      visual.classList.toggle('trio', d.imgs.length > 2);
+      visual.innerHTML = d.imgs.map(function (item) {
+        return '<div class="role-phone"><img alt="' + item.alt + '" src="' + item.src + '"></div>';
+      }).join('');
+      var i = roleKeys.indexOf(key);
+      if (i >= 0) roleAt = i;
+      markRoleTab(key);
+      armRoleTimer();
+    }
+
+    armRoleTimer();
+    window.refreshRole = function () { switchRole(roleKeys[roleAt]); };
+
+    (function () {
+      var root = document.documentElement;
+      function settle() {
+        document.getAnimations().forEach(function (a) {
+          if (a.id && String(a.id).indexOf('intro:') === 0) a.cancel();
+        });
+        root.classList.remove('intro');
+      }
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!root.classList.contains('intro') || reduce || typeof Element.prototype.animate !== 'function') {
+        settle();
+        return;
+      }
+      var D = innerWidth <= 700 ? 0.66 : 1;
+      var EXPO = 'cubic-bezier(.16,1,.3,1)';
+      var SOFT = 'cubic-bezier(.22,.61,.36,1)';
+      function Y(px) { return '0 ' + (px * D) + 'px'; }
+      var n = 0, last = null, lastEnd = -1;
+      function play(el, from, dur, delay, ease) {
+        if (!el) return;
+        var to = { opacity: 1 };
+        if (Object.prototype.hasOwnProperty.call(from, 'translate')) to.translate = '0 0';
+        if (Object.prototype.hasOwnProperty.call(from, 'scale')) to.scale = '1';
+        if (Object.prototype.hasOwnProperty.call(from, 'clipPath')) to.clipPath = 'inset(-30% 0 -30% 0)';
+        var anim = el.animate([from, to], { duration: dur, delay: delay, easing: ease, fill: 'both' });
+        anim.id = 'intro:' + (n++);
+        var end = delay + dur;
+        if (end >= lastEnd) { lastEnd = end; last = anim; }
+      }
+      function q(s) { return document.querySelector(s); }
+      play(q('.site-head'), { opacity: 0, translate: Y(-9) }, 620, 60, EXPO);
+      play(q('.brand-mark'), { opacity: 0, translate: Y(6) }, 520, 150, SOFT);
+      document.querySelectorAll('.nav-links a').forEach(function (a, i) {
+        play(a, { opacity: 0, translate: Y(6) }, 460, 215 + i * 45, SOFT);
+      });
+      play(q('.lang-switch'), { opacity: 0, translate: Y(6) }, 500, 400, SOFT);
+      play(q('#h1a'), { opacity: 0, translate: Y(15), clipPath: 'inset(100% 0 -30% 0)' }, 900, 380, EXPO);
+      play(q('#h1b'), { opacity: 0, translate: Y(15), clipPath: 'inset(100% 0 -30% 0)' }, 900, 470, EXPO);
+      play(q('.hero-primary'), { opacity: 0, translate: Y(13), scale: '.985' }, 620, 760, EXPO);
+      play(q('.hero-secondary'), { opacity: 0, translate: Y(13), scale: '.985' }, 560, 900, EXPO);
+      play(q('.phone-ring'), { opacity: 0, translate: Y(18), scale: '.99' }, 950, 700, EXPO);
+      play(q('.pc-mockup'), { opacity: 0, translate: Y(26) }, 900, 900, EXPO);
+      if (last && last.finished) last.finished.then(settle, settle);
+      else settle();
+    })();
+
+    (function () {
+      var ITEMS = [
+        { layout: 'pc', pc: 'matrix/pc-message.png', phones: [{ src: 'matrix/phone-message.png', fit: 'crop' }], name: '消息中心', enName: 'Messages', tag: '即时沟通', enTag: 'Chat', tagColor: '#dc2626', tagBg: '#fef2f2', desc: '消息中心：全域即时互联与未读聚合', enDesc: 'Messages: instant reach and unread in one place', note: '支持已读回执', enNote: 'Read receipts' },
+        { layout: 'pc', pc: 'matrix/pc-today.png', phones: [{ src: 'matrix/phone-today.png', fit: 'crop' }], name: '今日事待办', enName: 'Today', tag: '日程集成', enTag: 'Calendar', tagColor: '#294E95', tagBg: '#eef2f8', desc: '今日事待办：O365 日程会议与待批流聚合', enDesc: 'Today: O365 meetings and approvals in one flow', note: '日程冲突感知 · 极速入会', enNote: 'Conflict aware · join fast' },
+        { layout: 'phones', phones: [{ src: 'matrix/phone-campus.png', fit: 'crop' }, { src: 'matrix/phone-nav.png', fit: 'fill' }, { src: 'matrix/phone-bus.png', fit: 'full' }], name: '智慧园区', enName: 'Smart Campus', tag: '工位选座', enTag: 'Desks', tagColor: '#059669', tagBg: '#ecfdf5', desc: '智慧园区：工位会议室可视化预订与生活服务', enDesc: 'Campus: book desks and rooms, plus daily services', note: '全球园区多点覆盖 · 触碰签到', enNote: 'Global campuses · tap to check in' },
+        { layout: 'phones', phones: [{ src: 'matrix/phone-discover.png', fit: 'crop' }, { src: 'matrix/phone-sport.png', fit: 'full' }, { src: 'matrix/phone-bless.png', fit: 'full' }], name: '发现社区', enName: 'Discover', tag: '企业文化', enTag: 'Culture', tagColor: '#9333ea', tagBg: '#faf5ff', desc: '发现社区：企业文化活动与联想品牌社区', enDesc: 'Discover: culture events and the Lenovo community', note: '健康挑战赛 · 乐友圈分享', enNote: 'Health challenges · LeYou Circle' },
+        { layout: 'pc', pc: 'matrix/pc-apps.png', phones: [{ src: 'matrix/phone-apps.png', fit: 'crop' }], name: '应用工作台', enName: 'Apps', tag: '统一门户', enTag: 'Portal', tagColor: '#d97706', tagBg: '#fffbeb', desc: '应用工作台：一站式微应用入口与免密单点', enDesc: 'Apps: one portal, single sign-on, no extra passwords', note: '置顶常用应用 · 企业专属服务', enNote: 'Pin favorites · Lenovo services' }
+      ];
+      var shot = document.getElementById('matrix-shot');
+      var copy = document.getElementById('matrix-copy');
+      var indexLabel = document.getElementById('matrix-index');
+      var prev = document.getElementById('matrix-prev');
+      var next = document.getElementById('matrix-next');
+      if (!shot || !copy || !prev || !next || !indexLabel) return;
+
+      var M = ITEMS.length;
+      var active = 0;
+      var autoplay = true;
+      var duration = 3000;
+      var timer = 0;
+      function randomRotate() { return Math.floor(Math.random() * 21) - 10; }
+      var rotations = ITEMS.map(randomRotate);
+
+      function phoneFrame(phone, alt) {
+        return '<div class="matrix-phone"><div class="matrix-phone-screen"><img class="matrix-shot-' + phone.fit + '" src="' + phone.src + '" alt="' + alt + '" draggable="false"></div></div>';
+      }
+      var frames = ITEMS.map(function (item) {
+        var card = document.createElement('div');
+        card.className = 'matrix-card matrix-card-' + item.layout;
+        var media = item.layout === 'pc'
+          ? '<img class="matrix-pc" src="' + item.pc + '" alt="' + item.name + '" draggable="false">'
+          : '';
+        card.innerHTML = '<div class="matrix-card-inner">' + media + item.phones.map(function (phone) {
+          return phoneFrame(phone, item.name);
+        }).join('') + '</div>';
+        shot.appendChild(card);
+        return card;
+      });
+
+      function pose(index) {
+        var on = index === active;
+        return {
+          opacity: on ? 1 : 0.7,
+          transform: 'translateY(0px) scale(' + (on ? 1 : 0.95) + ') rotate(' + (on ? 0 : rotations[index]) + 'deg)',
+          z: on ? 40 : (M + 2 - index)
+        };
+      }
+
+      function paintCards(bounce) {
+        frames.forEach(function (img, index) {
+          var end = pose(index);
+          img.style.zIndex = String(end.z);
+          img.getAnimations().forEach(function (a) { a.cancel(); });
+          if (index === active && bounce) {
+            img.animate([
+              { opacity: 0.7, transform: 'translateY(0px) scale(0.95) rotate(' + rotations[index] + 'deg)', offset: 0 },
+              { opacity: 1, transform: 'translateY(-80px) scale(1) rotate(0deg)', offset: 0.45 },
+              { opacity: 1, transform: end.transform, offset: 1 }
+            ], { duration: 400, easing: 'ease-in-out', fill: 'forwards' });
+          } else {
+            img.animate(
+              [{ opacity: end.opacity, transform: end.transform }],
+              { duration: bounce ? 400 : 1, easing: 'ease-in-out', fill: 'forwards' }
+            );
+          }
+        });
+      }
+
+      function paintCopy() {
+        var item = ITEMS[active];
+        var en = window.PAGE_LANG === 'en';
+        var name = en && item.enName ? item.enName : item.name;
+        var tag = en && item.enTag ? item.enTag : item.tag;
+        var desc = en && item.enDesc ? item.enDesc : item.desc;
+        var note = en && item.enNote ? item.enNote : item.note;
+        var words = Array.from(desc).map(function (ch, index) {
+          return '<span class="matrix-word" style="animation-delay:' + (0.02 * index) + 's">' + ch + '</span>';
+        }).join('');
+        copy.innerHTML =
+          '<div class="matrix-intro matrix-copy-in">' +
+            '<span class="matrix-tag" style="color:' + item.tagColor + ';background:' + item.tagBg + '">' + tag + '</span>' +
+            '<h3 class="matrix-name">' + name + '</h3>' +
+            '<p class="matrix-desc">' + words + '</p>' +
+            '<p class="matrix-note">' + note + '</p>' +
+          '</div>';
+        indexLabel.textContent = String(active + 1).padStart(2, '0') + ' / 05';
+      }
+
+      function go(delta) {
+        rotations[active] = randomRotate();
+        active = (active + delta + M) % M;
+        paintCards(true);
+        paintCopy();
+        if (autoplay) {
+          clearInterval(timer);
+          timer = setInterval(function () { go(1); }, duration);
+        }
+      }
+
+      prev.addEventListener('click', function () { go(-1); });
+      next.addEventListener('click', function () { go(1); });
+      paintCards(false);
+      paintCopy();
+      window.refreshMatrix = paintCopy;
+      if (autoplay) timer = setInterval(function () { go(1); }, duration);
+    })();
+
+    window.PAGE_LANG = 'zh';
+    var I18N = {
+      'nav.dl': ['全平台下载', 'Downloads'],
+      'nav.matrix': ['功能矩阵', 'Features'],
+      'nav.scenes': ['功能场景', 'Scenarios'],
+      'nav.why': ['选择乐聊', 'Why LeLiao'],
+      'nav.roles': ['业务角色', 'Roles'],
+      'nav.help': ['帮助中心', 'Help Center'],
+      'nav.oa': ['公众号服务', 'Accounts'],
+      'hero.a': ['乐聊 MyHub 一站式办公平台', 'LeLiao MyHub, One Workplace'],
+      'hero.b': ['随时随地高效连接，全天候赋能数字化办公', 'Connected anywhere, powered all day'],
+      'dl.title': ['全平台客户端下载', 'Downloads for Every Platform'],
+      'dl.sub': ['支持 Windows、iOS、Android 及 Web 端，随时随地开启数字化高效办公体验', 'Windows, iOS, Android, and Web, ready whenever you are'],
+      'dl.win': ['Windows 桌面端', 'Windows'],
+      'dl.winp': ['专为 ThinkPad 及 PC 优化，适配 Windows 10 / 11 64位官方企业版', 'Built for ThinkPad and PC, Windows 10 / 11 64-bit'],
+      'dl.winb': ['下载安装包 (.exe)', 'Download (.exe)'],
+      'dl.web': ['网页工作台', 'Web Workspace'],
+      'dl.webp': ['免安装直达，全面兼容主流现代浏览器，支持企业 SSO 单点登录', 'No install. Works in modern browsers with enterprise SSO'],
+      'dl.webb': ['进入网页工作台', 'Open Web Workspace'],
+      'dl.and': ['Android 客户端', 'Android'],
+      'dl.andp': ['扫码下载安卓客户端，支持手机快捷登录，随时查看工作台消息', 'Scan to install Android and check the workspace on your phone'],
+      'dl.ios': ['iOS 客户端', 'iOS'],
+      'dl.iosp': ['扫码前往 App Store 下载客户端，移动端同步办公数据', 'Scan for the App Store app. Mobile stays in sync'],
+      'dl.contact': ['联系我们', 'Contact'],
+      'dl.contactp': ['如有产品咨询、功能反馈、使用问题，欢迎邮件沟通', 'Questions, feedback, or support — email us'],
+      'dl.copy': ['复制邮箱', 'Copy email'],
+      'mx.title': ['五大核心功能矩阵 · 掌上全联想', 'Five Core Features'],
+      'mx.sub': ['真实手机截图展现 MyHub 8.0 精致人机界面与强大功能架构', 'Real screens of MyHub 8.0 and how the product is put together'],
+      'why.title': ['乐聊MyHub主要功能场景', 'Main LeLiao MyHub Scenarios'],
+      'sc.1t': ['移动办公 · 沟通', 'Mobile · Chat'],
+      'sc.1a': ['邮件：企业级邮件方案，与电脑端 Outlook 无缝互通', 'Mail: enterprise email that stays in sync with Outlook'],
+      'sc.1b': ['即时通讯：随时随地与全球同事建立联系', 'Chat: reach colleagues anywhere'],
+      'sc.1c': ['群聊：支持千人大群、工作群与运动群，成员变化实时建群，离职自动退群，保障公司信息安全', 'Groups: large work and sports groups, live membership, and automatic exit when someone leaves'],
+      'sc.2t': ['移动办公 · 协作', 'Mobile · Collaborate'],
+      'sc.2a': ['日程：支持日历共享，并与 Outlook 同步关联', 'Calendar: share schedules and stay linked with Outlook'],
+      'sc.2b': ['通讯录：查看联想全球企业架构，让内部沟通更顺畅', 'Directory: the global Lenovo org, so internal contact is direct'],
+      'sc.2c': ['任务：轻量级任务分配与管理', 'Tasks: light assignment and follow-up'],
+      'sc.3t': ['移动办公 · 审批', 'Mobile · Approvals'],
+      'sc.3a': ['随时在手机端处理审批待办，覆盖 HR、IT、财务、行政与业务等多个系统单据', 'Approve on a phone across HR, IT, finance, admin, and business systems'],
+      'sc.4t': ['智慧园区', 'Smart Campus'],
+      'sc.4a': ['北京园区：餐卡查询、办公用品预定、停车助手、打印服务、联想 AED、通勤车、内转信预约', 'Beijing: meal card, supplies, parking, print, AED, shuttle, and internal mail'],
+      'sc.4b': ['上海园区：园区概览、餐卡查询、会议室扫码预定、停车助手，以及更多园区服务', 'Shanghai: campus overview, meal card, room QR booking, parking, and more'],
+      'eco.pre': ['联想员工为什么 ', 'Why employees '],
+      'eco.em': ['选择乐聊Myhub', 'choose LeLiao MyHub'],
+      'eco.o': ['与 Outlook 对比', 'Compared with Outlook'],
+      'eco.op': ['作为一站式移动办公 App，除了电子邮件和日历功能，乐聊能够支持即时通讯、系统审批、企业通讯录等办公需求，功能更加强大和全面', 'Beyond email and calendar, LeLiao also covers chat, approvals, and the company directory in one app'],
+      'eco.t': ['与 Teams 对比', 'Compared with Teams'],
+      'eco.tp': ['依托联想强大的自研能力，除提供团队协作工具外，乐聊支持定制化开发，满足联想全球不同的业务需求，同时，乐聊也是全球联想员工交流、分享联想文化的聚集地，每天都有各式文化活动等你参加', 'LeLiao adds custom builds for Lenovo businesses worldwide, and it is where employees share culture and join daily activities'],
+      'cap.h': ['亮点', 'Highlight'],
+      'cap.im': ['即时通讯', 'Chat'],
+      'cap.cal': ['日程', 'Calendar'],
+      'cap.dir': ['企业通讯录', 'Directory'],
+      'cap.appr': ['审批中心', 'Approvals'],
+      'cap.task': ['团队任务', 'Team tasks'],
+      'cap.todo': ['个人待办', 'Personal to-dos'],
+      'cap.room': ['会议室预定', 'Room booking'],
+      'cap.leave': ['休假申请', 'Leave'],
+      'cap.custom': ['客制化需求', 'Custom needs'],
+      'cap.supply': ['办公用品', 'Supplies'],
+      'cap.culture': ['文化活动', 'Culture'],
+      'cap.nav': ['园区导航', 'Campus nav'],
+      'roles.title': ['不同业务角色，同一套高质体验', 'One Experience, Every Role'],
+      'roles.sub': ['无论日常全员打卡还是团队领导决策，皆有量身定制的高效数字化工作流', 'From daily work to leadership decisions, each role gets a workflow built for it'],
+      'role.all': ['全员通用场景', 'Everyone'],
+      'role.leader': ['团队主管场景', 'Team Leads'],
+      'role.sales': ['销售与差旅业务', 'Sales & Travel'],
+      'role.partner': ['生态合作伙伴', 'Partners'],
+      'ft.blurb': ['联想全球企业一体化智能数字工作台，连接人人，赋能业务，实现全球智慧园区与全端办公生态的卓越连接', 'Lenovo’s connected workplace for people, business, smart campuses, and every device'],
+      'ft.iso': ['通过 ISO/IEC 27001 信息安全与数据隐私双重认证', 'ISO/IEC 27001 certified for security and privacy'],
+      'ft.product': ['产品矩阵', 'Products'],
+      'ft.p1': ['消息中心 (Chat)', 'Messages (Chat)'],
+      'ft.p2': ['今日事待办 (Today)', 'Today'],
+      'ft.p3': ['智慧园区 (Campus)', 'Campus'],
+      'ft.p4': ['发现社区 (Community)', 'Community'],
+      'ft.p5': ['应用工作台 (Portal)', 'Apps (Portal)'],
+      'ft.admin': ['管理后台', 'Admin'],
+      'ft.a1': ['公众号申请平台', 'Account Applications'],
+      'ft.a2': ['乐聊表情上传平台', 'Sticker Upload'],
+      'ft.more': ['其他支持', 'More'],
+      'ft.shop': ['联想商城', 'Lenovo Store']
+    };
+    function setLang(lang) {
+      window.PAGE_LANG = lang === 'en' ? 'en' : 'zh';
+      var i = window.PAGE_LANG === 'en' ? 1 : 0;
+      document.documentElement.lang = i ? 'en' : 'zh-CN';
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var pair = I18N[el.getAttribute('data-i18n')];
+        if (pair) el.textContent = pair[i];
+      });
+      document.querySelectorAll('.lang-switch button').forEach(function (btn) {
+        btn.classList.toggle('is-on', btn.getAttribute('data-set-lang') === window.PAGE_LANG);
+      });
+      var copyBtn = document.getElementById('copy-mail');
+      if (copyBtn && I18N['dl.copy']) copyBtn.setAttribute('aria-label', I18N['dl.copy'][i]);
+      if (window.refreshMatrix) window.refreshMatrix();
+      if (window.refreshRole) window.refreshRole();
+    }
+    document.querySelectorAll('.lang-switch button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.getAttribute('data-set-lang');
+        if (lang === 'en') {
+          window.location.href = 'https://myhubmobile.lenovo.com/#/home?lang=en';
+          return;
+        }
+        setLang(lang);
+      });
+    });
+    (function () {
+      var copyBtn = document.getElementById('copy-mail');
+      if (!copyBtn) return;
+      var addr = 'MyHub@lenovo.com';
+      var timer = 0;
+      function mark() {
+        var icon = copyBtn.querySelector('.material-symbols-outlined');
+        copyBtn.classList.add('is-done');
+        if (icon) icon.textContent = 'check';
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          copyBtn.classList.remove('is-done');
+          if (icon) icon.textContent = 'content_copy';
+        }, 1600);
+      }
+      function fallback() {
+        var input = document.createElement('textarea');
+        input.value = addr;
+        input.setAttribute('readonly', '');
+        input.style.position = 'fixed';
+        input.style.left = '-999px';
+        document.body.appendChild(input);
+        input.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(input);
+        if (ok) mark();
+      }
+      copyBtn.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(addr).then(mark, fallback);
+        } else {
+          fallback();
+        }
+      });
+    })();
+    (function () {
+      var topBtn = document.getElementById('to-top');
+      if (!topBtn) return;
+      function syncTop() {
+        topBtn.classList.toggle('is-on', window.scrollY > 320);
+      }
+      window.addEventListener('scroll', syncTop, { passive: true });
+      syncTop();
+      topBtn.addEventListener('click', function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    })();
+    (function () {
+      var stack = document.getElementById('pc-stack');
+      if (!stack) return;
+      var cards = stack.querySelectorAll('.pc-card');
+      var faces = stack.querySelectorAll('.pc-card-face');
+      var n = faces.length;
+      var mul = 0.15;
+      var cardH = 523;
+      var mq = window.matchMedia('(max-width: 900px)');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var ticking = false;
+      function update() {
+        ticking = false;
+        if (mq.matches || reduce.matches) {
+          for (var k = 0; k < n; k++) faces[k].style.transform = '';
+          return;
+        }
+        for (var i = 0; i < n; i++) {
+          var p = 0;
+          if (i < n - 1) {
+            var cardTop = cards[i].getBoundingClientRect().top;
+            var nextTop = cards[i + 1].getBoundingClientRect().top;
+            var sticky = 120 + i * 16;
+            var start = cardTop + cardH;
+            var denom = start - sticky;
+            p = denom > 0 ? (start - nextTop) / denom : 0;
+            if (p < 0) p = 0;
+            else if (p > 1) p = 1;
+          }
+          var scale = 1 - (n - 1 - i) * mul * p;
+          faces[i].style.transform = 'scale(' + scale.toFixed(4) + ')';
+        }
+      }
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    })();
+  </script>
+</body>
+</html>
